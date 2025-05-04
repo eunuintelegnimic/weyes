@@ -10,20 +10,37 @@ int main()
 //  --- Keep above other
     SetWindowState(FLAG_WINDOW_TOPMOST);
 
-//  --- Set window size to 3/4 of the screen size
-    int windowWidth = GetMonitorWidth(0) / 4;
-    int windowHeight = GetMonitorHeight(0) / 3;
+//  --- Set window size to 4/5 of the screen size
+    int windowWidth = GetMonitorWidth(0) / 5;
+    int windowHeight = GetMonitorHeight(0) / 4;
 //      If the screen is too small set specific values
     if (GetScreenWidth() <= 1280 || GetScreenHeight() <= 720){
-        windowWidth = 320;
-        windowHeight = 260;
+        windowWidth = 256;
+        windowHeight = 180;
     } SetWindowSize(windowWidth, windowHeight);
+//  --- Place it in bottom-right corner
+    SetWindowPosition(GetMonitorWidth(0) - windowWidth,
+                      GetMonitorHeight(0) - windowHeight);
+
+//  --- Eyes sizes and positions and pupils radius
+    Vector2 eyeSize = {windowWidth/4, windowHeight/2};
+    Vector2 eyeL = {windowWidth/4, windowHeight/2};
+    Vector2 eyeR = {windowWidth - windowWidth/4, windowHeight/2};
+
+    Vector2 pupilL = eyeL;
+    Vector2 pupilR = eyeR;
+    float pupilRadius = eyeSize.y / 5;
 
 //  --- I think it's clear what this loop is for
     while (!WindowShouldClose()) {
-        BeginDrawing();
-            ClearBackground(BLANK);
-        EndDrawing();
+    BeginDrawing();
+        ClearBackground(BLANK);
+        DrawEllipseLines(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, WHITE);
+        DrawEllipseLines(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, WHITE);
+
+        DrawCircleLinesV(pupilL, pupilRadius, WHITE);
+        DrawCircleLinesV(pupilR, pupilRadius, WHITE);
+    EndDrawing();
     }
 
 //  --- Close the window afterwards
