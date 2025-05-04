@@ -35,11 +35,13 @@ int main()
     while (!WindowShouldClose()) {
     BeginDrawing();
         ClearBackground(BLANK);
-        DrawEllipseLines(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, WHITE);
-        DrawEllipseLines(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, WHITE);
+        DrawEllipse(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, WHITE);
+        DrawEllipse(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, WHITE);
+        DrawEllipseLines(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, BLACK);
+        DrawEllipseLines(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, BLACK);
 
-        DrawCircleLinesV(pupilL, pupilRadius, WHITE);
-        DrawCircleLinesV(pupilR, pupilRadius, WHITE);
+        DrawCircleV(pupilL, pupilRadius, BLACK);
+        DrawCircleV(pupilR, pupilRadius, BLACK);
     EndDrawing();
     }
 
