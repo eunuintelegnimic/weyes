@@ -1,21 +1,66 @@
-# Windowed eyes
+**`README.md`**
+# weyes
 
-A small [raylib](https://www.raylib.com/) app that draw a pair of eyes in the bottom-right corner
+**weyes** is a C project using the [raylib](https://www.raylib.com/) library.
 
-## Preview
-![Eyes!](images/eyes.png)
+## Features
 
-## Build
+- Built in C
+- Uses the raylib for graphics
+- Simple CMake-based build system
+
+## Requirements
+
+- CMake ≥ 3.16
+- A C compiler
+- raylib (>= 5.0)
+
+### Installing raylib
+
+#### On Arch btw:
+```bash
+sudo pacman -Sy raylib
+```
+
+#### On Ubuntu/Debian:
+```bash
+sudo apt install libraylib-dev
+```
+
+#### On macOS (with Homebrew):
 
 ```bash
+brew install raylib
+```
+
+## Build Instructions
+
+```bash
+git clone https://github.com/eunuintelegnimic/weyes.git
+cd weyes
 mkdir build
 cd build
 cmake ..
 make
 ```
 
-## Execute
+## Installation
+
 ```bash
-chmod +x ./build/weyes
-./build/weyes
+sudo make install
 ```
+
+> You can also set a custom installation prefix:
+
+```bash
+cmake -DCMAKE_INSTALL_PREFIX=/your/custom/path 
+```
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+© 2025 eunuintelegnimic
+
