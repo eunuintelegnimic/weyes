@@ -1,6 +1,10 @@
 #include <raylib.h>
 #include <raymath.h>
+#include "main.h"
 
+double inEyeFactor(Vector2 eye, Vector2 size);
+Vector2 clampElipse(Vector2 eye, Vector2 size);
+Vector2 customLerp(Vector2 V, double t);
 
 int main()
 {
@@ -12,7 +16,7 @@ int main()
 
 //  --- Keep above other
     SetWindowState(FLAG_WINDOW_TOPMOST);
-    SetWindowState(FLAG_WINDOW_MOUSE_PASSTHROUGH);
+    //SetWindowState(FLAG_WINDOW_MOUSE_PASSTHROUGH);
     SetWindowState(FLAG_WINDOW_UNDECORATED);
 
 //  --- Set eyes size to 4/5 of the screen size
@@ -33,16 +37,22 @@ int main()
     Vector2 eyeL = {windowWidth - eyesWidth/4, windowHeight - eyesHeight/2};
     Vector2 eyeR = {windowWidth - (eyesWidth - eyesWidth/4), windowHeight - eyesHeight/2};
 
-    Vector2 pupilL = eyeL;
-    Vector2 pupilR = eyeR;
+    Vector2 pupilL;
+    Vector2 pupilR;
     float pupilRadius = eyeSize.y / 5;
 
 //  --- I think it's clear what this loop is for
     while (!WindowShouldClose()) {
+
+        pupilL = clampElipse(eyeL, eyeSize);
+        pupilR = clampElipse(eyeR, eyeSize);
+
     BeginDrawing();
         ClearBackground(BLANK);
+
         DrawEllipse(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, WHITE);
         DrawEllipse(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, WHITE);
+
         DrawEllipseLines(eyeL.x, eyeL.y, eyeSize.x, eyeSize.y, BLACK);
         DrawEllipseLines(eyeR.x, eyeR.y, eyeSize.x, eyeSize.y, BLACK);
 
