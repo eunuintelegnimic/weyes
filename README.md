@@ -1,7 +1,7 @@
 **`README.md`**
 # weyes
 
-**weyes** is a C project using the [raylib](https://www.raylib.com/) library.
+**weyes** is a C project like xorg-xeyes using the [raylib](https://www.raylib.com/) library.
 
 ## Features
 
